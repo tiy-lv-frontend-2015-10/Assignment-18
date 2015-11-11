@@ -42,13 +42,6 @@ var dinosaur = new Dinosaur({
   scary: true
 })
 
-  var dinoPull = {
-    "dinosaur": dinosaur
-  };
-    var dinoTemplate = $("#dinoTemplate").text();
-    var dinoHTML = Mustache.render(dinoTemplate, dinoPull);
-    $("#dinoProducts").html(dinoHTML);
-
 var Dinosaurs = Backbone.Collection.extend({
   model: Dinosaur,
   _parse_class_name: "Dinosaur"
