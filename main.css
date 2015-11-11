@@ -1,0 +1,32 @@
+body {
+	background-color: blue;
+}
+
+h2 {
+	font-family: "Arial", "sans-serif";
+	color: black;
+}
+
+#template {
+	width: 500px;
+	height: 500px;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+.dogName {
+	background-color: yellow;
+}
+
+.size {
+	font-family: "Arial", "sans-serif";
+	color: black;
+	font-size: 10px;
+}
+
+.group {
+	font-family: "Arial", "sans-serif";
+	color: black;
+	font-size: 10px;
+}
+
