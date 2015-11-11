@@ -54,7 +54,7 @@ var MusicCollection = new Music();
 music.save(null, {
   success: function(resp) {
     console.log(resp)
-s
+
     MusicCollection.fetch({
       success: function(resp) {
         console.log("success: ", resp);
