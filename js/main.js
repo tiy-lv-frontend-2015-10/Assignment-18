@@ -83,6 +83,7 @@ var Restaurants = Backbone.Collection.extend({
 });
 
 var RestaurantView = Backbone.View.extend({
+  tagName:"li",
     render: function(){
       this.$el.html(this.model.get("restaurantName"));
 
@@ -115,7 +116,7 @@ var Restaurant = new Restaurant({
 })
 
 var RestaurantsView = new RestaurantsView ({
-  el: "#container", model: Restaurants})
+  el: "#Restaurants", model: Restaurants})
 RestaurantsView.render();
 
 
