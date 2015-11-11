@@ -9,7 +9,7 @@ $.ajaxSetup({
 
 var Game = Backbone.Model.extend({
   initialize: function () {
-    console.log("A new game has been added");
+    console.log("A new game has been added to your list");
   },
   defaults: {
     title: null,
