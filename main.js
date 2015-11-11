@@ -9,7 +9,6 @@ $.ajaxSetup({
 
 var Game = Backbone.Model.extend({
   initialize: function () {
-    console.log("A new game has been added to your list");
   },
   defaults: {
     title: null,
@@ -36,44 +35,64 @@ var Game = Backbone.Model.extend({
       return "Release Year should be a number";
     }
   },
-  _parse_class_name: "Games"
+  _parse_class_name: "Games",
+  idAttribute: "objectId"
 });
 
 var game = new Game({
   title: "The Last of Us",
   developer: "Naughty Dog",
   releaseYear: 2013
-})
+});
 
 var Games = Backbone.Collection.extend({
   model: Game,
   _parse_class_name: "Games"
-});
+})
 
 var GamesCollection = new Games();
 
-game.set({
-  title: "Grand Theft Auto V",
-  developer: "Rockstar Games",
-  releaseYear: 2013
+GamesCollection.fetch({
+  success: function(resp){
+    console.log(resp);
+  }
 });
 
 game.save(null, {
-  success: function(resp) {
-    console.log(resp)
+  success: function(resp){
+    console.log(resp);
+  }
+  });
 
-    GamesCollection.fetch({
-      success: function(resp) {
-        console.log("success: ", resp);
-        }, error: function (err) {
-          console.log("error: ", err);
-        }
-      })
-    },
-  error: function (err) {
-    console.log(err)
+
+var Router = Backbone.Router.extend({
+  initialize: function(){
+    Backbone.history.start({pushState: true});
+  },
+  routes:{
+    "game/:objectId": "game",
+    "": "index"
   }
 });
+
+var router = new Router();
+
+router.on('route:game', function(objectId){
+  var game = new Game ({objectId: objectId});
+  game.fetch();
+  console.log("Game Page");
 });
 
+router.on('route:index', function(){
+  console.log("home page");
+});
+
+
+$("a").on('click', function(e){
+  e.preventDefault();
+  var href = $(this).attr('href');
+  href = href.substr(1);
+  router.navigate(href,{trigger:true});
+});
+});
 
