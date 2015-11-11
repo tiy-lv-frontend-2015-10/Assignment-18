@@ -78,7 +78,7 @@ Restaurant.save(null, {
 
 var Restaurant =Backbone.Model.extend();
 
-var Restaurant = Backbone.Collection.extend({
+var Restaurants = Backbone.Collection.extend({
   model: Restaurant
 });
 
@@ -93,25 +93,29 @@ var RestaurantView = Backbone.View.extend({
 
 var RestaurantsView = Backbone.View.extend({
   render: function(){
+    var self = this;
+
     this.model.each(function(Restaurant){
-      var RestaurantView = new RestaurantView({ model: Restaurant});
-      this.$el.append(songView.render().$el);
+      var restaurantView = new RestaurantView({ model: Restaurant});
+      self.$el.append(restaurantView.render().$el);
 
     });
   }
 });
 
-var Restaurant = new Restaurants([
-  new Restaurant({ restaurantName: "Ruku"});
-  new Restaurant({ restaurantName: "Aureole"});
-  new Restaurant({ restaurantName: "twist"})
+var Restaurants = new Restaurants([
+  new Restaurant({ restaurantName: "Ruku"}),
+  new Restaurant({ restaurantName: "Aureole"}),
+  new Restaurant({ restaurantName: "Twist"})
   ]);
+
 
 var Restaurant = new Restaurant({
   restaurantName: "Raku"
 })
-var RestaurantView = new RestaurantView ({
-  el: "#container", model: Restaurant})
-RestaurantView.render();
+
+var RestaurantsView = new RestaurantsView ({
+  el: "#container", model: Restaurants})
+RestaurantsView.render();
 
 
