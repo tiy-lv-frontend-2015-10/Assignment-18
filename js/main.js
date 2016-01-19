@@ -40,7 +40,7 @@ var Router = Backbone.Router.extend({
     Backbone.history.start({pushState: true});
   },
   routes: {
-    "pets": "pets",
+    "name": "name",
     " ":"index"
   }
 });
